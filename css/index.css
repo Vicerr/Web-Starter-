@@ -1,0 +1,162 @@
+/*-------------------*/
+/* Custom properties */
+/*-------------------*/
+:root{
+
+    /* typography */
+    --ff-main: serif;
+    --fs-regular: .75rem;
+    --fw-regular: 200;
+    --fc-main: 0 100% 100%;
+
+    /* background-color */
+    --bg-color-main: 128 0% 0%;
+
+    /* text color  */
+    --color-main: ;
+}
+
+
+
+/*------------------------------------*/
+/* Hard reset                         */
+/*------------------------------------*/
+
+/* box sizing */
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+
+/* reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+p{
+    margin: 0;
+}
+
+/* make forms easier to work with  */
+input,
+button,
+textarea,
+select{
+    font: inherit;
+}
+
+/* set up body  */
+body{
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+
+/* remove animations for people who've turned them off  */
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::after,
+    *::before {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+
+    }
+    
+}
+
+
+
+/*------------------------------------*/
+/* Utility classes                    */
+/*------------------------------------*/
+
+.bg-color-main{background-color: hsl(var(--bg-color-main));}
+.color-primary{color: hsl(var(--fc-main));}
+.fs-regular{font-size: var(--fs-regular);}
+
+.container{
+    margin-inline: auto;
+    padding-inline: 2rem;
+    max-width: 80rem;
+}
+
+.flex{
+    display: flex;
+    gap: var(--gap, 1rem);
+    --gap: .25rem;
+}
+
+
+.grid{
+    display: inline-grid;
+    place-items: center;
+    gap: var(--gap, 1rem);
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+
+/*------------------------------------*/
+/* Main styling                       */
+/*------------------------------------*/
+
+.button-indicator *{
+    width: 2rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 0;
+    background-color: hsl(var(--bg-color-main) / .25);
+    transition: background-color 300ms ease-in-out;
+}
+
+.button-indicator > [aria-selected="true"]{
+    background-color: hsl(var(--bg-color-main) / 1);
+    cursor: pointer;
+}
+
+.button-indicator *:not([aria-selected="true"]):hover {
+    background-color: hsl(var(--bg-color-main) / .65);
+    cursor: pointer;
+}
+
+.large-button{
+    background-color: hsl(var(--bg-color-main));
+    width: 6rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    margin: 4rem 0;
+    
+}
+
+.large-button::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--bg-color-main) / .25);
+    border-radius: 50%;
+    transition: transform 300ms ease-in-out;
+
+}
+
+.large-button:hover::after{
+    transform: scale(1.5);
+    cursor: pointer;
+}
